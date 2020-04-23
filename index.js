@@ -87,22 +87,33 @@ class Car {
   }
 
   ////////////^^^^^^^^THE ABOVE WORKS^^^^^^^^^////////////////////////////////////////////////
-  
+ 
+  //if the current gas level minus the (distance/MPG) is less than or equal to 0
+  //set actualDistance equal to MPG*tank (the actual distance the car is able to drive before running out of gas)
+  //reset the tank to 0
+
+  //add the actual distance to the odometer
+  //return the "i ran out of gas" line
+  // (end if statement)
+  //subtract the (distance/MPG) from tank
+  //add the distance to odometer
+
   drive(distance){
-    for(let i = 0; i < distance; i++){//Runs for desired distance
-      
-      if(this.tank === 0){
+     
+      if(this.tank - (distance / this.milesPerGallon) <= 0){
+        this.odometer += this.milesPerGallon * this.tank;//gives how many miles can go with what ya got
+        this.tank = 0;
         return `I ran out of fuel at ${this.odometer} miles!`;//if there is no more fuel it says I ran at at whatever miles and stops.
       }
 
       else{///if you got fuel still then
-      this.odometer++;// add 1 mile per 1 distance
-      this.tank = this.odometer / this.milesPerGallon;// Tank should equal Tank - (distance/MPG) for some reason I cant subtract.
+      this.odometer += distance;// add 1 mile per 1 distance
+      this.tank = this.tank -(this.odometer / this.milesPerGallon);// Tank should equal Tank - (distance/MPG) for some reason I cant subtract.
       }
 
     }
   }
-}
+
  
 /*
   TASK 3

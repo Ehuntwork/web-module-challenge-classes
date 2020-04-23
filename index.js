@@ -85,14 +85,21 @@ class Car {
   fill(gallons){
     this.tank += gallons;
   }
+
+  ////////////^^^^^^^^THE ABOVE WORKS^^^^^^^^^////////////////////////////////////////////////
+  
   drive(distance){
-    for(let i = 0; i < distance; i++){
+    for(let i = 0; i < distance; i++){//Runs for desired distance
+      
       if(this.tank === 0){
-        return `I ran out of fuel at ${this.odometer} miles!`;
+        return `I ran out of fuel at ${this.odometer} miles!`;//if there is no more fuel it says I ran at at whatever miles and stops.
       }
 
-      this.odometer++;
-      this.tank = this.odometer / this.milesPerGallon;
+      else{///if you got fuel still then
+      this.odometer++;// add 1 mile per 1 distance
+      this.tank = this.odometer / this.milesPerGallon;// Tank should equal Tank - (distance/MPG) for some reason I cant subtract.
+      }
+
     }
   }
 }
